@@ -1,10 +1,18 @@
 package woocommerce
 
-import "testing"
+import (
+	"net/url"
+	"testing"
+)
 
 func TestGetOrders(t *testing.T) {
 	c := getTestClient()
-	r, err := c.Orders().List(nil)
+
+	params := url.Values{}
+	params.Set("orderby", "id")
+	params.Set("order", "desc")
+
+	r, err := c.Orders().List(params)
 	if err != nil {
 		t.Fatal(err)
 	}
