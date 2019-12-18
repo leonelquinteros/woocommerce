@@ -5,8 +5,8 @@ import (
 	"strconv"
 )
 
-// OrderResponse data
-type OrderResponse struct {
+// Order data
+type Order struct {
 	ID                 int                 `json:"id"`
 	ParentID           int                 `json:"parent_id"`
 	Number             string              `json:"number"`
@@ -31,8 +31,8 @@ type OrderResponse struct {
 	CustomerIPAddress  string              `json:"customer_ip_address"`
 	CustomerUserAgent  string              `json:"customer_user_agent"`
 	CustomerNote       string              `json:"customer_note"`
-	Billing            OrderBilling        `json:"billing"`
-	Shipping           OrderShipping       `json:"shipping"`
+	Billing            Billing             `json:"billing"`
+	Shipping           Shipping            `json:"shipping"`
 	PaymentMethod      string              `json:"payment_method"`
 	PaymentMethodTitle string              `json:"payment_method_title"`
 	TransactionID      string              `json:"transaction_id"`
@@ -48,35 +48,7 @@ type OrderResponse struct {
 	FeeLines           []OrderFeeLine      `json:"fee_lines"`
 	CouponLines        []OrderCouponLine   `json:"coupon_lines"`
 	Refunds            []OrderRefundLine   `json:"refunds"`
-	Links              LinksResponse       `json:"_links"`
-}
-
-// OrderBilling data
-type OrderBilling struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Company   string `json:"company"`
-	Address1  string `json:"address_1"`
-	Address2  string `json:"address_2"`
-	City      string `json:"city"`
-	State     string `json:"state"`
-	Postcode  string `json:"postcode"`
-	Country   string `json:"country"`
-	Email     string `json:"email"`
-	Phone     string `json:"phone"`
-}
-
-// OrderShipping data
-type OrderShipping struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Company   string `json:"company"`
-	Address1  string `json:"address_1"`
-	Address2  string `json:"address_2"`
-	City      string `json:"city"`
-	State     string `json:"state"`
-	Postcode  string `json:"postcode"`
-	Country   string `json:"country"`
+	Links              Links               `json:"_links"`
 }
 
 // OrderLineItem data
@@ -161,15 +133,15 @@ type Orders struct {
 }
 
 // List all orders
-func (o Orders) List(listParams url.Values) ([]OrderResponse, error) {
-	r := make([]OrderResponse, 0)
+func (o Orders) List(listParams url.Values) ([]Order, error) {
+	r := make([]Order, 0)
 	err := o.Client.Request("GET", "orders", listParams, &r)
 	return r, err
 }
 
 // Get order by ID
-func (o Orders) Get(id int) (OrderResponse, error) {
-	var or OrderResponse
+func (o Orders) Get(id int) (Order, error) {
+	var or Order
 	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id), nil, &or)
 	return or, err
 }

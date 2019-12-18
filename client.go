@@ -123,6 +123,13 @@ func (c Client) Request(method, endpoint string, params url.Values, response int
 	return err
 }
 
+// Customers returns a Customers API client
+func (c Client) Customers() Customers {
+	return Customers{
+		Client: c,
+	}
+}
+
 // Orders returns a Orders API client
 func (c Client) Orders() Orders {
 	return Orders{
