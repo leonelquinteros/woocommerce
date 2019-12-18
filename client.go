@@ -11,18 +11,8 @@ import (
 )
 
 // ClientConfig is used to instantiate a new Woocommerce API Client with the defined values.
-// To construct requests to https://example.com/wp-json/wc/v3/products set the client configuration as follows:
-//
-//   ClientConfig {
-//	   APIHost:    "https://example.com",
-//	   APIPrefix:  "/wp-json/wc",
-//	   APIVersion: "/v3",
-//   }
-//
 type ClientConfig struct {
-	APIHost        string
-	APIPrefix      string
-	APIVersion     string
+	APIHost        string // Complete REST API base URL: "https://example.com/wp-json/wc/v3"
 	ConsumerKey    string
 	ConsumerSecret string
 	UseBasicAuth   bool
@@ -35,7 +25,7 @@ func (cc ClientConfig) GetAPIEndpoint(method string) string {
 	if err != nil {
 		return ""
 	}
-	base.Path = path.Join(base.Path, cc.APIPrefix, cc.APIVersion, method)
+	base.Path = path.Join(base.Path, method)
 	return base.String()
 }
 

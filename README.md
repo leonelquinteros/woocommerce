@@ -24,8 +24,6 @@ func main() {
     // Grab config from environment variables
     conf := woocommerce.ClientConfig{
 		APIHost:        os.Getenv("WC_API_HOST"),
-		APIPrefix:      os.Getenv("WC_API_PREFIX"),
-		APIVersion:     os.Getenv("WC_API_VERSION"),
 		ConsumerKey:    os.Getenv("WC_API_CONSUMER_KEY"),
 		ConsumerSecret: os.Getenv("WC_API_CONSUMER_SECRET"),
     }
@@ -48,3 +46,27 @@ func main() {
     }
 }
 ```
+
+
+## Available endpoints
+
+### Customers
+
+- [List costumers](https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-customers)
+- [Get costumer](https://woocommerce.github.io/woocommerce-rest-api-docs/#retrieve-a-customer)
+
+```go
+client.Customers().List(params)
+client.Customers().Get(customerID)
+```
+
+### Orders
+
+- [List orders](https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders)
+- [Get order](https://woocommerce.github.io/woocommerce-rest-api-docs/#retrieve-an-order)
+
+```go
+client.Orders().List(params)
+client.Orders().Get(orderID)
+```
+
