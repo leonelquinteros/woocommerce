@@ -1,2 +1,3 @@
-# woocommerce
-Go Woocommerce API SDK
+# Go Woocommerce API client SDK 
+
+
