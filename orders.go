@@ -152,14 +152,21 @@ func (o Orders) List(listParams url.Values) ([]Order, error) {
 
 // Get order by ID
 func (o Orders) Get(id int) (Order, error) {
-	var or Order
-	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id), nil, &or)
-	return or, err
+	var r Order
+	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id), nil, &r)
+	return r, err
 }
 
 // ListOrderNotes retrieves all notes for a given order
 func (o Orders) ListOrderNotes(id int) ([]OrderNote, error) {
 	r := make([]OrderNote, 0)
 	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id)+"/notes", nil, &r)
+	return r, err
+}
+
+// GetOrderNote by IDs
+func (o Orders) GetOrderNote(orderID, noteID int) (OrderNote, error) {
+	var r OrderNote
+	err := o.Client.Request("GET", "orders/"+strconv.Itoa(orderID)+"/notes/"+strconv.Itoa(noteID), nil, &r)
 	return r, err
 }
