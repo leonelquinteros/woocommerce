@@ -20,7 +20,12 @@ func TestGetOrders(t *testing.T) {
 	if len(r) > 0 {
 		_, err = c.Orders().Get(r[0].ID)
 		if err != nil {
-			t.Fatal(err)
+			t.Error(err)
+		}
+
+		_, err = c.Orders().ListOrderNotes(r[0].ID)
+		if err != nil {
+			t.Error(err)
 		}
 	}
 }
