@@ -63,9 +63,11 @@ client.Customers().Get(customerID)
 
 - [List orders](https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders)
 - [Get order](https://woocommerce.github.io/woocommerce-rest-api-docs/#retrieve-an-order)
+- [List orders notes](https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-order-notes)
 
 ```go
 client.Orders().List(params)
 client.Orders().Get(orderID)
+client.Orders().ListOrderNotes(orderID)
 ```
 

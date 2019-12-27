@@ -127,6 +127,17 @@ type OrderRefundLine struct {
 	Total  string `json:"total"`
 }
 
+// OrderNote data
+type OrderNote struct {
+	ID             int    `json:"id"`
+	Author         string `json:"author"`
+	DateCreated    string `json:"date_created"`
+	DateCreatedGmt string `json:"date_created_gmt"`
+	Note           string `json:"note"`
+	CustomerNote   bool   `json:"customer_note"`
+	Links          Links  `json:"_links"`
+}
+
 // Orders API client
 type Orders struct {
 	Client
@@ -144,4 +155,11 @@ func (o Orders) Get(id int) (Order, error) {
 	var or Order
 	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id), nil, &or)
 	return or, err
+}
+
+// ListOrderNotes retrieves all notes for a given order
+func (o Orders) ListOrderNotes(id int) ([]OrderNote, error) {
+	r := make([]OrderNote, 0)
+	err := o.Client.Request("GET", "orders/"+strconv.Itoa(id)+"/notes", nil, &r)
+	return r, err
 }
