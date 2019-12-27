@@ -71,3 +71,24 @@ client.Orders().Get(orderID)
 client.Orders().ListOrderNotes(orderID)
 ```
 
+
+## Tests
+
+Most tests will depend on several environment variables to use as configuration for the Woocommerce client. 
+
+Check the helper function at `env_test.go`:
+
+```go
+func getTestClient() Client {
+	cc := ClientConfig{
+		APIHost:        os.Getenv("WC_API_HOST"),
+		ConsumerKey:    os.Getenv("WC_API_CONSUMER_KEY"),
+		ConsumerSecret: os.Getenv("WC_API_CONSUMER_SECRET"),
+		Debug:          true,
+	}
+	return NewClient(cc)
+}
+```
+
+You have to set `WC_API_HOST`, `WC_API_CONSUMER_KEY` and `WC_API_CONSUMER_SECRET` 
+to the corresponding configuration values for your environment.
