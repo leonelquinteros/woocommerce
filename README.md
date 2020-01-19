@@ -1,7 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/leonelquinteros/woocommerce.svg)](https://github.com/leonelquinteros/woocommerce)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GoDoc](https://godoc.org/github.com/leonelquinteros/woocommerce?status.svg)](https://godoc.org/github.com/leonelquinteros/woocommerce)
-[![Go Report Card](https://goreportcard.com/badge/github.com/leonelquinteros/woocommerce)](https://goreportcard.com/report/github.com/leonelquinteros/gotext)
+[![Go Report Card](https://goreportcard.com/badge/github.com/leonelquinteros/woocommerce)](https://goreportcard.com/report/github.com/leonelquinteros/woocommerce)
 
 
 # Woocommerce SDK 

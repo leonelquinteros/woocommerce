@@ -14,9 +14,4 @@ func TestClientConfig(t *testing.T) {
 	if r != check {
 		t.Errorf("Expected '%s', got '%s'", check, r)
 	}
-
-	r = cc.GetAPIEndpoint("products")
-	if r != check {
-		t.Errorf("Expected '%s', got '%s'", check, r)
-	}
 }
