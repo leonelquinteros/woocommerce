@@ -2,9 +2,9 @@ package woocommerce
 
 // MetaData object
 type MetaData struct {
-	ID    int    `json:"id"`
-	Key   string `json:"key"`
-	Value string `json:"value"`
+	ID    int         `json:"id"`
+	Key   string      `json:"key"`
+	Value interface{} `json:"value"`
 }
 
 // Links data
